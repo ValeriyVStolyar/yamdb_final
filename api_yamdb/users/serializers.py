@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
-
 from users.models import User
 
 FORBIDDEN_NAME = 'Username с таким наименованием уже зарегистрирован'

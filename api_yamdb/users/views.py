@@ -1,3 +1,4 @@
+from api.permissions import IsAdminOrOwner
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from rest_framework import filters, generics, permissions, status, viewsets
@@ -5,13 +6,8 @@ from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-
-from api.permissions import IsAdminOrOwner
-from users.serializers import (
-    RegisterSerializer,
-    UserLoginSerializer,
-    UserSerializer
-)
+from users.serializers import (RegisterSerializer, UserLoginSerializer,
+                               UserSerializer)
 from users.utils import Utils
 
 User = get_user_model()
