@@ -2,6 +2,8 @@
 
 yamdb_final
 
+![yamdb_final](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=feature-1)
+
 ### Краткое описание проекта
 
 API к сайту отзывов к художекственным произведениям.
