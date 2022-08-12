@@ -26,7 +26,6 @@ jobs:
         python -m pip install --upgrade pip 
         # установка flake8 и его плагинов
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
-        # pip install flake8
         # установка зависимостей
         pip install -r api_yamdb/requirements.txt 
 
@@ -36,7 +35,7 @@ jobs:
         python -m flake8
         # перейти в папку, содержащую manage.py — 
         #<корневая_папка>/<папка_проекта>/manage.py
-        cd api_yamdb/
+        # cd api_yamdb/
         # запустить написанные разработчиком тесты
         # python manage.py test
         pytest
