@@ -61,6 +61,7 @@ jobs:
           # # остановка всех контейнеров
           # sudo docker stop $(sudo docker ps -a -q)
           # sudo docker run --rm -d -p 5000:5000 vvst/yamdb
+          # test
           sudo docker-compose stop
           sudo docker-compose rm web
           touch .env
