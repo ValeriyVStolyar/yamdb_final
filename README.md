@@ -139,6 +139,12 @@ sudo docker-compose exec web python manage.py collectstatic --no-input
 sudo docker-compose exec web python manage.py migrate --no-input
 sudo docker-compose exec web python manage.py createsuperuser
 
+С локального компьютера находясь в папке проекта /yamdb_final/api_yamdb выполняем команду
+scp -r ./static/* vvs@51.250.11.18:/home/vvs/
+
+Далее, с сервера хоста -
+sudo docker cp redoc.yaml 9dd62845c1a0:/app/static/redoc.yaml
+
 ### Описание команды для заполнения базы данными
 
 По адресу http://51.250.11.18/admin/ авторизуемся как админ и заполняем базу данных.
