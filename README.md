@@ -1,8 +1,6 @@
 # yamdb_final
 
-yamdb_final
-
-![yamdb_final](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=feature-1)
+https://github.com/ValeriyVStolyar/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg
 
 ### Краткое описание проекта
 
@@ -14,36 +12,16 @@ API к сайту отзывов к художекственным произв�
 - Django 2.2
 - Djangorestframework 3.12
 
-## Запуск проекта в dev-режиме
-
-- Установите и активируйте виртуальное окружение
-- Установите зависимости из файла requirements.txt
-```
-pip install -r requirements.txt
-``` 
-- Примените миграции БД:
-```
-python3 manage.py migrate
-```
-- При необходимости импортируйте тестовые данные в БД:
-```
-python3 manage.py uploadcsv
-```
-- Запустите проект:
-```
-python3 manage.py runserver
-```
-
 ## Примеры запросов
 
 ```
-GET http://localhost:8000/api/v1/titles/ HTTP/1.1
+GET http://62.84.124.20/api/v1/titles/ HTTP/1.1
 Content-Type: application/json
 Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciO......
 
 {
   "count": 32,
-  "next": "http://127.0.0.1:8000/api/v1/titles/?page=2",
+  "next": "http://62.84.124.20/api/v1/titles/?page=2",
   "previous": null,
   "results": [
     {
@@ -102,7 +80,7 @@ Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciO......
 }
 ```
 ```
-GET http://localhost:8000/api/v1/titles/1/reviews/ HTTP/1.1
+GET http://62.84.124.20/api/v1/titles/1/reviews/ HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciO......
 
@@ -131,19 +109,18 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciO......
 
 ## Документация
 
-http://localhost:8000/redoc/
+http://62.84.124.20/redoc/
 
 ## Авторы
 
 Alexander aka R6DJO, Tatyana aka tachanka595 and Valery aka ValeriyVStolyar
 
-### Описание команд для запуска приложения в контейнерах
+### Для запуска приложения в контейнерах
 
-Клонируем директорию yamdb_final из удаленного репозитория на github.com, в которой создаем служебный файл .env с переменными окружения.
+Клонируем директорию yamdb_final из удаленного репозитория на github.com. В Setting - Secrets - Actions  
+DB_ENGINE, DB_HOST, DB_NAME, DB_PORT, DOCKER_PASSWORD,DOCKER_USERNAME, HOST, POSTGRES_PASSWORD, POSTGRES_USER, SSH_KEY, TELEGRAM_TO, TELEGRAM_TOKEN, USER устанавливаем значения для файла .env с переменными окружения и данные для входа на сервер.
 
-Из файла приложения выполняем команду docker-compose up -d
-
-### Шаблон наполнения env-файла
+### Пример шаблона наполнения env-файла
 
 DB_ENGINE=django.db.backends.postgresql # указываем, что работаем с postgresql
 DB_NAME=postgres # имя базы данных
@@ -152,6 +129,16 @@ POSTGRES_PASSWORD=postgres # пароль для подключения к БД 
 DB_HOST=db # название сервиса (контейнера)
 DB_PORT=5432 # порт для подключения к БД
 
+### Описание команд для запуска приложения в контейнерах
+
+Войдите на свой удаленный сервер в облаке.
+Установите docker: sudo apt install docker.io
+Скопируйте файлы docker-compose.yaml и nginx/default.conf из проекта на сервер в home/<ваш_username>/docker-compose.yaml и home/<ваш_username>/nginx/default.conf соответственно.
+После выполнения команды push на github выполните команды на сервере:
+sudo docker-compose exec web python manage.py collectstatic --no-input
+sudo docker-compose exec web python manage.py migrate --no-input
+sudo docker-compose exec web python manage.py createsuperuser
+
 ### Описание команды для заполнения базы данными
 
-По адресу http://localhost/admin/ авторизуемся как админ и заполняем базу данных.
+По адресу http://62.84.124.20/admin/ авторизуемся как админ и заполняем базу данных.
