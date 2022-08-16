@@ -15,13 +15,13 @@ API к сайту отзывов к художекственным произв�
 ## Примеры запросов
 
 ```
-GET http://62.84.124.20/api/v1/titles/ HTTP/1.1
+GET http://51.250.11.18/api/v1/titles/ HTTP/1.1
 Content-Type: application/json
 Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciO......
 
 {
   "count": 32,
-  "next": "http://62.84.124.20/api/v1/titles/?page=2",
+  "next": "http://51.250.11.18/api/v1/titles/?page=2",
   "previous": null,
   "results": [
     {
@@ -80,7 +80,7 @@ Authorization: Token eyJ0eXAiOiJKV1QiLCJhbGciO......
 }
 ```
 ```
-GET http://62.84.124.20/api/v1/titles/1/reviews/ HTTP/1.1
+GET http://51.250.11.18/api/v1/titles/1/reviews/ HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciO......
 
@@ -109,7 +109,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciO......
 
 ## Документация
 
-http://62.84.124.20/redoc/
+http://51.250.11.18/redoc/
 
 ## Авторы
 
@@ -141,4 +141,4 @@ sudo docker-compose exec web python manage.py createsuperuser
 
 ### Описание команды для заполнения базы данными
 
-По адресу http://62.84.124.20/admin/ авторизуемся как админ и заполняем базу данных.
+По адресу http://51.250.11.18/admin/ авторизуемся как админ и заполняем базу данных.
